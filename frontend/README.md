@@ -18,6 +18,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Troubleshooting
+
+### npm warn Unknown env config "http-proxy"
+
+If you see this warning when running npm commands, it means an environment variable is setting the deprecated `http-proxy` npm config key. Update your environment to use the supported proxy keys instead:
+
+- Prefer setting `NPM_CONFIG_PROXY` and `NPM_CONFIG_HTTPS_PROXY`, or
+- Set npm config values with `npm config set proxy <url>` and `npm config set https-proxy <url>`.
+
+If you do not need a proxy, remove the `http-proxy`/`https-proxy` variables from your environment.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
