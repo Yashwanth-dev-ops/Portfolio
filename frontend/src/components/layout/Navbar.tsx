@@ -79,7 +79,7 @@ export function Navbar() {
                         exit={{ opacity: 0, height: 0 }}
                         className="md:hidden bg-black/90 backdrop-blur-xl border-b border-white/10 overflow-hidden"
                     >
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 max-h-[calc(100vh-5rem)] overflow-y-auto">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.name}
