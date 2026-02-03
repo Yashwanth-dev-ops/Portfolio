@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - TARGET_EMAIL=${TARGET_EMAIL}
+    volumes:
+      - ./backend/assets:/root/assets
+      - ./backend/portfolio.db:/root/portfolio.db # Persist DB
+    restart: always

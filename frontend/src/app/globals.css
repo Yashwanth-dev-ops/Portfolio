@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Pure Black & Monochrome Palette */
+  --color-metallic-900: #000000;  /* Pure Black */
+  --color-metallic-800: #0f0f0f;  /* Off Black (Cards) */
+  --color-metallic-700: #262626;  /* Dark Gray (Borders) */
+  --color-metallic-100: #e5e5e5;  /* Silver */
+
+  /* Accents - Shifted to Silver/Steel instead of Blue, with optional Gold */
+  --color-azure-500: #ffffff; /* White prominence */
+  --color-azure-400: #a3a3a3; /* Silver/Gray */
+
+  --color-gold-500: #d4af37; /* Classic Gold */
+
+  /* Background Images */
+  --background-image-metallic-gradient: linear-gradient(180deg, #000000 0%, #111111 100%);
+  --background-image-shine: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.05) 50%, transparent 75%);
+
+  /* Fonts */
+  --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+  --font-mono: var(--font-jetbrains), monospace;
+}
+
+/* Custom CSS Variables */
+:root {
+  --background: #000000;
+  --foreground: #f5f5f5;
+}
+
+html {
+  scroll-padding-top: 100px; /* Ensures anchor links don't hide behind navbar */
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply bg-metallic-900 text-foreground antialiased selection:bg-azure-500/30 selection:text-white;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  .glass-panel {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  
+  .metallic-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-gray-300 to-gray-500;
+  }
+}
