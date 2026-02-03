@@ -108,7 +108,7 @@ export function Hero() {
                                 </Cinematic3DButton>
                             </Link>
 
-                            <a href="http://localhost:8080/api/cv" download>
+                            <a href="/api/cv" download>
                                 <Cinematic3DButton className="bg-white/5 border-white/5 hover:bg-white/10">
                                     <Download className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">DOWNLOAD CV</span>

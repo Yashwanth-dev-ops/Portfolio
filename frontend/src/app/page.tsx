@@ -6,10 +6,13 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Hero />
 
-      {/* Short placeholder for content until next tasks */}
-      <section className="py-20 bg-metallic-900">
-        <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
-          <p className="text-gray-500 font-mono text-sm uppercase tracking-widest">Trusted Expertise</p>
+      {/* Core Competencies Section */}
+      <section className="py-20 bg-metallic-900 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 mb-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-azure-100 to-gray-400">
+            Technical Proficiency
+          </h2>
+          <div className="w-16 h-1 bg-azure-500 rounded-full mx-auto mt-4 opacity-50" />
         </div>
         <SkillsMarquee />
       </section>
