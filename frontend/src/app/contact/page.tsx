@@ -62,7 +62,7 @@ export default function ContactPage() {
             <div className="absolute top-[5%] left-1/2 -translate-x-1/2 w-full flex justify-center pointer-events-none z-0 select-none overflow-hidden opacity-10">
                 <motion.h1 className="flex font-black leading-none tracking-tighter">
                     <motion.span
-                        className="text-[12vw] text-white"
+                        className="text-[20vw] sm:text-[12vw] text-white"
                         style={{
                             textShadow: "0 0 50px rgba(255,255,255,0.1)"
                         }}
@@ -79,7 +79,7 @@ export default function ContactPage() {
                     subtitle="Secure channel ready. Transmit your objectives."
                 />
 
-                <div className="grid lg:grid-cols-2 gap-16 items-start mt-12">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start mt-12">
 
                     {/* Contact Info Column */}
                     <motion.div
@@ -141,7 +141,7 @@ export default function ContactPage() {
                         {/* Decorative background elements behind form */}
                         <div className="absolute -inset-1 bg-gradient-to-r from-azure-500/20 to-purple-500/20 rounded-2xl blur-xl opacity-50" />
 
-                        <div className="relative bg-black/60 backdrop-blur-xl p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
+                        <div className="relative bg-black/60 backdrop-blur-xl p-6 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
                             {success ? (
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9 }}
@@ -166,7 +166,7 @@ export default function ContactPage() {
                                     </button>
                                 </motion.div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="space-y-8">
+                                <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
                                     <div className="space-y-2 group">
                                         <label htmlFor="name" className="text-xs font-mono text-azure-400 uppercase tracking-widest ml-1">Full Name</label>
                                         <div className="relative">
