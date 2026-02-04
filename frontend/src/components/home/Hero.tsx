@@ -44,10 +44,7 @@ export function Hero() {
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="space-y-6 flex flex-col items-center"
                     >
-                        {/* Role Text - Top Center */}
-                        {/* Role Text - Top Center */}
-
-                        {/* MOBILE: Typewriter Effect (Tech/Console Vibe) - SEQUENCED: Starts after Name */}
+                        {/* MOBILE: Typewriter Effect (Tech/Console Vibe) - SEQUENCED: Starts FIRST */}
                         <motion.div
                             initial="hidden"
                             animate="visible"
@@ -57,7 +54,7 @@ export function Hero() {
                                     opacity: 1,
                                     transition: {
                                         staggerChildren: 0.05,
-                                        delayChildren: 1.5 // Wait for Name (1.2s) to finish
+                                        delayChildren: 0.2 // Start immediately
                                     }
                                 }
                             }}
@@ -92,7 +89,7 @@ export function Hero() {
                                 <motion.div
                                     initial={{ y: "110%", opacity: 0 }}
                                     animate={{ y: "0%", opacity: 1 }}
-                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
+                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: 2.5 }} // Delayed 2.5s for Mobile Role
                                     className="text-[13vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
@@ -103,7 +100,7 @@ export function Hero() {
                                 <motion.div
                                     initial={{ y: "110%", opacity: 0 }}
                                     animate={{ y: "0%", opacity: 1 }}
-                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
+                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: 2.6 }} // Delayed 2.6s for Mobile Role
                                     className="text-[13vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
