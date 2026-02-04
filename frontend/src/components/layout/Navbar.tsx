@@ -24,8 +24,10 @@ export function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    {/* Logo Removed as per request */}
-                    <div />
+                    {/* Logo Removed as per request, but added centered name for mobile */}
+                    <div className="absolute left-1/2 -translate-x-1/2 md:hidden">
+                        <span className="text-lg font-bold text-white tracking-widest font-mono whitespace-nowrap">NANDA KISHORE</span>
+                    </div>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:block">

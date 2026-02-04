@@ -47,22 +47,22 @@ export function Hero() {
                         {/* Role Text - Top Center */}
                         {/* Role Text - Cinematic Tracking Expansion */}
                         <motion.div
-                            initial={{ opacity: 0, letterSpacing: "-0.05em", filter: "blur(12px)" }}
-                            animate={{ opacity: 1, letterSpacing: "0.3em", filter: "blur(0px)" }}
+                            initial={{ opacity: 0, letterSpacing: "-0.05em" }}
+                            animate={{ opacity: 1, letterSpacing: "0.3em" }}
                             transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
                             className="text-sm md:text-xl font-mono text-azure-400 uppercase mb-4 text-center font-bold"
                         >
                             Senior Cloud Solution Architect
                         </motion.div>
 
-                        {/* MASSIVE TYPOGRAPHY - Ultra-Premium Masked Blur Reveal */}
+                        {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance (No Blur) */}
                         <div className="flex flex-col items-center font-serif font-black leading-[0.9] tracking-tight select-none relative z-20">
                             <div className="overflow-hidden py-2">
                                 <motion.div
-                                    initial={{ y: "110%", filter: "blur(12px)", opacity: 0 }}
-                                    animate={{ y: "0%", filter: "blur(0px)", opacity: 1 }}
-                                    transition={{ duration: 1.4, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
-                                    className="text-[12vw] md:text-[11vw] text-white"
+                                    initial={{ y: "110%", opacity: 0 }}
+                                    animate={{ y: "0%", opacity: 1 }}
+                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: 0.1 }}
+                                    className="text-[12vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     NANDA
@@ -70,10 +70,10 @@ export function Hero() {
                             </div>
                             <div className="overflow-hidden py-2">
                                 <motion.div
-                                    initial={{ y: "110%", filter: "blur(12px)", opacity: 0 }}
-                                    animate={{ y: "0%", filter: "blur(0px)", opacity: 1 }}
-                                    transition={{ duration: 1.4, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
-                                    className="text-[12vw] md:text-[11vw] text-white"
+                                    initial={{ y: "110%", opacity: 0 }}
+                                    animate={{ y: "0%", opacity: 1 }}
+                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: 0.2 }}
+                                    className="text-[12vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     KISHORE
