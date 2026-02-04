@@ -45,7 +45,9 @@ export function Hero() {
                         className="space-y-6 flex flex-col items-center"
                     >
                         {/* Role Text - Top Center */}
-                        {/* Role Text - Typewriter Effect for Senior Developer Vibe */}
+                        {/* Role Text - Top Center */}
+
+                        {/* MOBILE: Typewriter Effect (Tech/Console Vibe) */}
                         <motion.div
                             initial="hidden"
                             animate="visible"
@@ -59,7 +61,7 @@ export function Hero() {
                                     }
                                 }
                             }}
-                            className="text-xs md:text-xl font-mono text-azure-400 uppercase mb-4 text-center font-bold w-full min-h-[1.5rem] md:min-h-[2rem]"
+                            className="block md:hidden text-xs font-mono text-azure-400 uppercase mb-4 text-center font-bold w-full min-h-[1.5rem]"
                         >
                             {"Senior Cloud Solution Architect".split("").map((char, index) => (
                                 <motion.span
@@ -72,6 +74,16 @@ export function Hero() {
                                     {char}
                                 </motion.span>
                             ))}
+                        </motion.div>
+
+                        {/* DESKTOP: Cinematic Tracking Expansion (Premium Vibe) */}
+                        <motion.div
+                            initial={{ opacity: 0, letterSpacing: "-0.05em", filter: "blur(12px)" }}
+                            animate={{ opacity: 1, letterSpacing: "0.3em", filter: "blur(0px)" }}
+                            transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+                            className="hidden md:block text-xl font-mono text-azure-400 uppercase mb-4 text-center font-bold w-full min-h-[2rem]"
+                        >
+                            Senior Cloud Solution Architect
                         </motion.div>
 
                         {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance (No Blur) & Layout Stability */}
