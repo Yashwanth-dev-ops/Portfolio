@@ -98,24 +98,24 @@ export function Hero() {
                         </motion.div>
 
                         {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance & Layout Stability */}
-                        <div className="flex flex-col items-center font-serif font-black leading-[0.9] tracking-tight select-none relative z-20 w-full overflow-visible">
-                            <div className="overflow-hidden py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]">
+                        <div className={`flex flex-col items-center font-serif font-black leading-[0.9] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible' : 'z-20 overflow-hidden'} w-full`}>
+                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]`}>
                                 <motion.div
-                                    initial={isMobile ? { opacity: 0, scale: 0.8, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
-                                    animate={isMobile ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
+                                    initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
+                                    animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay }}
-                                    className="text-[13vw] md:text-[11vw] text-white text-center pb-2"
+                                    className="text-[11vw] md:text-[11vw] text-white text-center pb-2"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     NANDA
                                 </motion.div>
                             </div>
-                            <div className="overflow-hidden py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]">
+                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]`}>
                                 <motion.div
-                                    initial={isMobile ? { opacity: 0, scale: 0.8, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
-                                    animate={isMobile ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
+                                    initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
+                                    animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary }}
-                                    className="text-[13vw] md:text-[11vw] text-white text-center pb-2"
+                                    className="text-[11vw] md:text-[11vw] text-white text-center pb-2"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     KISHORE
@@ -128,7 +128,7 @@ export function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5, duration: 1 }}
-                            className="text-lg md:text-2xl text-gray-300 mt-8 max-w-2xl leading-relaxed font-light px-6 md:px-0"
+                            className="text-lg md:text-2xl text-gray-300 mt-8 max-w-2xl leading-relaxed font-light px-6 md:px-0 relative z-30"
                         >
                             Designing the <span className="text-white font-medium shadow-cyan-500/50 drop-shadow-lg">digital backbone</span> of the modern enterprise.
                         </motion.p>
@@ -139,7 +139,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7, duration: 1 }}
-                            className="flex flex-col md:flex-row justify-center items-center gap-6 mt-10 w-full md:w-auto px-4"
+                            className="flex flex-col md:flex-row justify-center items-center gap-6 mt-10 w-full md:w-auto px-4 relative z-40"
                         >
                             {/* MOBILE: Direct Mail Link (Using premium button style + FLOATING + GLOW) */}
                             <motion.a
