@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
-import { ArrowRight, Download, Send } from "lucide-react";
+import { ArrowRight, Download, Send, Mail } from "lucide-react";
 import Link from "next/link";
 import { NeuralBackground } from "@/components/ui/NeuralBackground";
 import { Cinematic3DButton } from "@/components/ui/Cinematic3DButton";
@@ -139,9 +139,23 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7, duration: 1 }}
-                            className="flex flex-wrap justify-center gap-6 mt-10"
+                            className="flex flex-col md:flex-row justify-center items-center gap-6 mt-10 w-full md:w-auto"
                         >
-                            <Link href="/contact">
+                            {/* MOBILE ONLY: Direct Email Card-Style Button */}
+                            <a
+                                href="mailto:nanda.pandu5@gmail.com"
+                                className="block md:hidden w-full max-w-[280px] p-4 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/10 active:scale-[0.98] transition-all duration-300"
+                            >
+                                <div className="flex items-center gap-4 justify-center">
+                                    <div className="p-2 rounded-xl bg-azure-500/10 text-azure-400">
+                                        <Mail className="w-5 h-5" />
+                                    </div>
+                                    <span className="font-bold tracking-wider text-white">EMAIL ME DIRECTLY</span>
+                                </div>
+                            </a>
+
+                            {/* DESKTOP ONLY: Cinematic Contact Link */}
+                            <Link href="/contact" className="hidden md:block">
                                 <Cinematic3DButton>
                                     <Send className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">INITIATE CONTACT</span>
@@ -149,8 +163,8 @@ export function Hero() {
                                 </Cinematic3DButton>
                             </Link>
 
-                            <a href="/api/cv" download>
-                                <Cinematic3DButton className="bg-white/5 border-white/5 hover:bg-white/10">
+                            <a href="/assets/Nanda_Kishore_Pasupuleti.pdf" download className="w-full md:w-auto flex justify-center">
+                                <Cinematic3DButton className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto">
                                     <Download className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">DOWNLOAD CV</span>
                                 </Cinematic3DButton>
