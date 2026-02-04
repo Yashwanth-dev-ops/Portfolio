@@ -45,14 +45,33 @@ export function Hero() {
                         className="space-y-6 flex flex-col items-center"
                     >
                         {/* Role Text - Top Center */}
-                        {/* Role Text - Cinematic Tracking Expansion */}
+                        {/* Role Text - Typewriter Effect for Senior Developer Vibe */}
                         <motion.div
-                            initial={{ opacity: 0, letterSpacing: "-0.05em" }}
-                            animate={{ opacity: 1, letterSpacing: "0.3em" }}
-                            transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+                            initial="hidden"
+                            animate="visible"
+                            variants={{
+                                hidden: { opacity: 0 },
+                                visible: {
+                                    opacity: 1,
+                                    transition: {
+                                        staggerChildren: 0.05,
+                                        delayChildren: 0.5
+                                    }
+                                }
+                            }}
                             className="text-xs md:text-xl font-mono text-azure-400 uppercase mb-4 text-center font-bold w-full min-h-[1.5rem] md:min-h-[2rem]"
                         >
-                            Senior Cloud Solution Architect
+                            {"Senior Cloud Solution Architect".split("").map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    variants={{
+                                        hidden: { opacity: 0 },
+                                        visible: { opacity: 1 }
+                                    }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
                         </motion.div>
 
                         {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance (No Blur) & Layout Stability */}
