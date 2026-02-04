@@ -150,13 +150,16 @@ export function Hero() {
                             </a>
 
                             {/* DESKTOP: Scroll to Form */}
-                            <Link href="#contact" className="hidden md:flex w-full md:w-auto justify-center">
-                                <Cinematic3DButton as={motion.div} className="w-full md:w-auto">
+                            <div className="hidden md:flex w-full md:w-auto justify-center">
+                                <Cinematic3DButton
+                                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="w-full md:w-auto"
+                                >
                                     <Send className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">INITIATE CONTACT</span>
                                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                 </Cinematic3DButton>
-                            </Link>
+                            </div>
 
                             <a href="/assets/Nanda_Kishore_Pasupuleti.pdf" download className="w-full md:w-auto flex justify-center">
                                 <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto">
