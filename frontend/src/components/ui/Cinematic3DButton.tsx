@@ -23,6 +23,16 @@ export function Cinematic3DButton({
     floating = true
 }: Cinematic3DButtonProps) {
     const isButton = Component === motion.button;
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    const floatDistance = isMobile ? -8 : -3;
 
     return (
         <div className="relative group">
@@ -32,7 +42,7 @@ export function Cinematic3DButton({
             <Component
                 {...(isButton ? { type, disabled, onClick } : { onClick })}
                 className={`relative z-10 px-10 py-5 rounded-full bg-black border border-white/10 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(59,130,246,0.15)] ${className}`}
-                animate={floating && !disabled ? { y: [0, -5, 0] } : {}}
+                animate={floating && !disabled ? { y: [0, floatDistance, 0] } : {}}
                 transition={floating && !disabled ? { duration: 4, repeat: Infinity, ease: "easeInOut" } : {}}
                 whileHover={!disabled ? { scale: 1.02, y: -2 } : {}}
                 whileTap={!disabled ? { scale: 0.98 } : {}}
