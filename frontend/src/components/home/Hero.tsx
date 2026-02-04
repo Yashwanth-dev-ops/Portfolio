@@ -98,24 +98,24 @@ export function Hero() {
                         </motion.div>
 
                         {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance & Layout Stability */}
-                        <div className={`flex flex-col items-center font-serif font-black leading-[0.9] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible' : 'z-20 overflow-hidden'} w-full`}>
-                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]`}>
+                        <div className={`flex flex-col items-center font-serif font-black leading-[0.85] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible' : 'z-20 overflow-hidden'} w-full`}>
+                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} ${isMobile ? 'py-0' : 'py-2'} w-full flex justify-center min-h-[11vw] md:min-h-[12vw]`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay }}
-                                    className="text-[11vw] md:text-[11vw] text-white text-center pb-2"
+                                    className="text-[11vw] md:text-[11vw] text-white text-center pb-0 md:pb-2"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     NANDA
                                 </motion.div>
                             </div>
-                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]`}>
+                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} ${isMobile ? 'py-0' : 'py-2'} w-full flex justify-center min-h-[11vw] md:min-h-[12vw] ${isMobile ? '-mt-2' : ''}`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary }}
-                                    className="text-[11vw] md:text-[11vw] text-white text-center pb-2"
+                                    className="text-[11vw] md:text-[11vw] text-white text-center pb-0 md:pb-2"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     KISHORE
