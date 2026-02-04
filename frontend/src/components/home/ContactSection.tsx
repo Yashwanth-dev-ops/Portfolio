@@ -118,7 +118,7 @@ export function ContactSection() {
                             <ContactCard
                                 icon={Mail}
                                 label="Direct Communication"
-                                value={email}
+                                value="Connect via Email"
                                 action={
                                     <button
                                         onClick={handleCopy}

@@ -42,7 +42,8 @@ export function Hero() {
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
                 <NeuralBackground />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-metallic-900/50 to-metallic-900" />
+                {/* Refined gradient overlay: Less aggressive on mobile to prevent "black shade" covering the name */}
+                <div className={`absolute inset-0 bg-gradient-to-b from-black/20 ${isMobile ? 'via-metallic-900/30' : 'via-metallic-900/50'} to-metallic-900`} />
             </div>
 
             <div className="relative z-10 w-full max-w-[1800px] px-4 flex flex-col items-center text-center pt-10">
@@ -103,7 +104,7 @@ export function Hero() {
                                     initial={isMobile ? { opacity: 0, scale: 0.8, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay }}
-                                    className="text-[13vw] md:text-[11vw] text-white text-center"
+                                    className="text-[13vw] md:text-[11vw] text-white text-center pb-2"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     NANDA
@@ -114,7 +115,7 @@ export function Hero() {
                                     initial={isMobile ? { opacity: 0, scale: 0.8, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary }}
-                                    className="text-[13vw] md:text-[11vw] text-white text-center"
+                                    className="text-[13vw] md:text-[11vw] text-white text-center pb-2"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     KISHORE
@@ -122,13 +123,12 @@ export function Hero() {
                             </div>
                         </div>
 
-
                         <motion.p
                             style={{ opacity: opacityHero }}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5, duration: 1 }}
-                            className="text-lg md:text-2xl text-gray-300 mt-8 max-w-2xl leading-relaxed font-light"
+                            className="text-lg md:text-2xl text-gray-300 mt-8 max-w-2xl leading-relaxed font-light px-6 md:px-0"
                         >
                             Designing the <span className="text-white font-medium shadow-cyan-500/50 drop-shadow-lg">digital backbone</span> of the modern enterprise.
                         </motion.p>
@@ -141,13 +141,22 @@ export function Hero() {
                             transition={{ delay: 0.7, duration: 1 }}
                             className="flex flex-col md:flex-row justify-center items-center gap-6 mt-10 w-full md:w-auto px-4"
                         >
-                            {/* MOBILE: Direct Mail Link (Using premium button style) */}
-                            <a href="mailto:nanda.pandu5@gmail.com" className="w-full md:w-auto flex md:hidden justify-center">
-                                <Cinematic3DButton as={motion.div} className="w-full md:w-auto">
+                            {/* MOBILE: Direct Mail Link (Using premium button style + FLOATING + GLOW) */}
+                            <motion.a
+                                href="mailto:nanda.pandu5@gmail.com"
+                                className="w-full md:w-auto flex md:hidden justify-center relative"
+                                animate={isMobile ? { y: [0, -8, 0] } : {}}
+                                transition={isMobile ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : {}}
+                            >
+                                {/* Mobile Persistent Glow */}
+                                {isMobile && (
+                                    <div className="absolute inset-0 bg-azure-500/20 blur-2xl animate-pulse rounded-full" />
+                                )}
+                                <Cinematic3DButton as={motion.div} className="w-full md:w-auto relative z-10 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
                                     <Send className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">EMAIL ME</span>
                                 </Cinematic3DButton>
-                            </a>
+                            </motion.a>
 
                             {/* DESKTOP: Scroll to Form */}
                             <div className="hidden md:flex w-full md:w-auto justify-center">
@@ -161,12 +170,22 @@ export function Hero() {
                                 </Cinematic3DButton>
                             </div>
 
-                            <a href="/assets/Nanda_Kishore_Pasupuleti.pdf" download className="w-full md:w-auto flex justify-center">
-                                <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto">
+                            <motion.a
+                                href="/assets/Nanda_Kishore_Pasupuleti.pdf"
+                                download
+                                className="w-full md:w-auto flex justify-center relative"
+                                animate={isMobile ? { y: [0, -8, 0] } : {}}
+                                transition={isMobile ? { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 } : {}}
+                            >
+                                {/* Mobile Persistent Glow Secondary */}
+                                {isMobile && (
+                                    <div className="absolute inset-0 bg-white/5 blur-xl animate-pulse rounded-full" />
+                                )}
+                                <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto relative z-10">
                                     <Download className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">DOWNLOAD CV</span>
                                 </Cinematic3DButton>
-                            </a>
+                            </motion.a>
                         </motion.div>
 
                         {/* Stats Block - Refined Glass Design */}
