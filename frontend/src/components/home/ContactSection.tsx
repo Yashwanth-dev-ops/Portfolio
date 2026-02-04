@@ -98,9 +98,9 @@ export function ContactSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold text-white tracking-tight leading-none"
+                                className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold text-white tracking-tight leading-none text-balance"
                             >
-                                Let&apos;s build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-azure-400 to-cyan-200">future together.</span>
+                                Let&apos;s build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-300 to-cyan-200">future together.</span>
                             </motion.h2>
 
                             <motion.p
