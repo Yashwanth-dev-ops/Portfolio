@@ -87,7 +87,7 @@ export function ContactSection() {
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="flex items-center gap-3 text-azure-400 font-mono text-xs tracking-[0.3em] uppercase"
+                                className="hidden md:flex items-center gap-3 text-azure-400 font-mono text-xs tracking-[0.3em] uppercase"
                             >
                                 <span className="w-8 h-[1px] bg-azure-500" />
                                 Contact Interface
