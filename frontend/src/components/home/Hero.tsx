@@ -56,9 +56,9 @@ export function Hero() {
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                        className="space-y-4 md:space-y-6 flex flex-col items-center"
+                        className="flex flex-col items-center"
                     >
-                        {/* MOBILE: Typewriter Effect (Tech/Console Vibe) - SEQUENCED: Starts FIRST */}
+                        {/* MOBILE: Typewriter Effect (Tech/Console Vibe) - NO SPACE-Y GAP */}
                         <motion.div
                             initial="hidden"
                             animate="visible"
@@ -72,7 +72,7 @@ export function Hero() {
                                     }
                                 }
                             }}
-                            className="block md:hidden text-xs font-mono text-azure-400 uppercase mb-0 text-center font-bold w-full min-h-[1rem]"
+                            className="block md:hidden text-xs font-mono text-azure-400 uppercase mb-2 text-center font-bold w-full"
                         >
                             {"Senior Cloud Solution Architect".split("").map((char, index) => (
                                 <motion.span
@@ -92,30 +92,30 @@ export function Hero() {
                             initial={{ opacity: 0, letterSpacing: "-0.05em", filter: "blur(12px)" }}
                             animate={{ opacity: 1, letterSpacing: "0.3em", filter: "blur(0px)" }}
                             transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-                            className="hidden md:block text-xl font-mono text-azure-400 uppercase mb-4 text-center font-bold w-full min-h-[2rem]"
+                            className="hidden md:block text-xl font-mono text-azure-400 uppercase mb-8 text-center font-bold w-full"
                         >
                             Senior Cloud Solution Architect
                         </motion.div>
 
                         {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance & Layout Stability */}
                         <div className={`flex flex-col items-center font-serif font-black leading-[0.75] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible' : 'z-20 overflow-hidden'} w-full`}>
-                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} ${isMobile ? 'py-0' : 'py-2'} w-full flex justify-center min-h-[12vw] md:min-h-[12vw]`}>
+                            <div className={`${isMobile ? 'overflow-visible py-0 h-auto' : 'overflow-hidden py-2 min-h-[12vw]'} w-full flex justify-center`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay }}
-                                    className="text-[14vw] md:text-[11vw] text-white text-center pb-0 md:pb-2"
+                                    className="text-[14vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     NANDA
                                 </motion.div>
                             </div>
-                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} ${isMobile ? 'py-0' : 'py-2'} w-full flex justify-center min-h-[12vw] md:min-h-[12vw] ${isMobile ? '-mt-6' : ''}`}>
+                            <div className={`${isMobile ? 'overflow-visible py-0 h-auto -mt-4' : 'overflow-hidden py-2 min-h-[12vw]'} w-full flex justify-center`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary }}
-                                    className="text-[14vw] md:text-[11vw] text-white text-center pb-0 md:pb-2"
+                                    className="text-[14vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     KISHORE
@@ -128,7 +128,7 @@ export function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5, duration: 1 }}
-                            className="text-lg md:text-2xl text-gray-300 mt-8 max-w-2xl leading-relaxed font-light px-6 md:px-0 relative z-30"
+                            className="text-lg md:text-2xl text-gray-300 mt-12 max-w-2xl leading-relaxed font-light px-6 md:px-0 relative z-30"
                         >
                             Designing the <span className="text-white font-medium shadow-cyan-500/50 drop-shadow-lg">digital backbone</span> of the modern enterprise.
                         </motion.p>
@@ -139,7 +139,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7, duration: 1 }}
-                            className="flex flex-col md:flex-row justify-center items-center gap-6 mt-10 w-full md:w-auto px-4 relative z-40"
+                            className="flex flex-col md:flex-row justify-center items-center gap-6 mt-16 w-full md:w-auto px-4 relative z-40"
                         >
                             {/* MOBILE: Direct Mail Link */}
                             <a href="mailto:nanda.pandu5@gmail.com" className="w-full md:w-auto flex md:hidden justify-center relative">
