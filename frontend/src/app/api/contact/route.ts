@@ -7,13 +7,31 @@ export async function POST(req: Request) {
         const body = await req.json();
         const { name, email, subject, message } = body;
 
-        // 1. Input Validation
+        // 1. Input Validation & Security Limits
         if (!name || !email || !message) {
             return NextResponse.json(
                 { message: 'Name, email, and message are required.' },
                 { status: 400 }
             );
         }
+
+        if (name.length > 100) return NextResponse.json({ message: 'Name too long.' }, { status: 400 });
+        if (subject && subject.length > 200) return NextResponse.json({ message: 'Subject too long.' }, { status: 400 });
+        if (message.length > 5000) return NextResponse.json({ message: 'Message too long.' }, { status: 400 });
+
+        // Helper: Basic HTML escaping to prevent injection in email body
+        const escapeHtml = (str: string) => {
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        };
+
+        const safeName = escapeHtml(name);
+        const safeSubject = subject ? escapeHtml(subject) : 'New Inquiry';
+        const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
         // 2. Configure Transporter (Gmail default, but works with any SMTP)
         const transporter = nodemailer.createTransport({
@@ -28,15 +46,15 @@ export async function POST(req: Request) {
         const mailOptionsFn = {
             from: process.env.SMTP_USER,
             to: process.env.SMTP_USER, // Send to yourself
-            subject: `Portfolio Contact: ${subject || 'New Inquiry'}`,
+            subject: `Portfolio Contact: ${safeSubject}`,
             html: `
                 <h3>New Message from Portfolio</h3>
-                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Name:</strong> ${safeName}</p>
                 <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Subject:</strong> ${subject}</p>
+                <p><strong>Subject:</strong> ${safeSubject}</p>
                 <div style="background:#f4f4f4; padding:15px; border-radius:5px;">
                     <p><strong>Message:</strong></p>
-                    <p>${message.replace(/\n/g, '<br>')}</p>
+                    <p>${safeMessage}</p>
                 </div>
             `,
             replyTo: email,
