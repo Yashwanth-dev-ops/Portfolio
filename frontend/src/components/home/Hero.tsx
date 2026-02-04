@@ -25,7 +25,7 @@ export function Hero() {
     const yStats = useTransform(scrollYProgress, [0.4, 0.7], [0, 100]);
 
     return (
-        <section ref={containerRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-metallic-900">
+        <section ref={containerRef} className="relative min-h-[95svh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden bg-metallic-900 pb-10 md:pb-0">
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
                 <NeuralBackground />
@@ -123,7 +123,7 @@ export function Hero() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.5 }}
                             transition={{ duration: 0.8 }}
-                            className="mt-12 mb-20 flex flex-wrap justify-center gap-8 md:gap-20 px-6 md:px-12 py-6 relative group"
+                            className="mt-8 mb-10 md:mt-12 md:mb-20 flex flex-wrap justify-center gap-4 md:gap-20 px-4 md:px-12 py-4 md:py-6 relative group"
                         >
                             {/* Glass Background with Gradient Border */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-black/40 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 group-hover:border-azure-400/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)] group-hover:shadow-[0_8px_32px_rgba(59,130,246,0.2)]" />

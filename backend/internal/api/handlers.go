@@ -8,7 +8,11 @@ import (
 	"portfolio-backend/internal/config"
 	"portfolio-backend/internal/database"
 	"portfolio-backend/pkg/mailer"
+	"regexp"
+	"strings"
 )
+
+var emailRegex = regexp.MustCompile(`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$`)
 
 type API struct {
 	Mailer *mailer.Mailer
@@ -54,28 +58,57 @@ func (api *API) ContactHandler(w http.ResponseWriter, r *http.Request) {
 	type ContactRequest struct {
 		Name    string `json:"name"`
 		Email   string `json:"email"`
+		Subject string `json:"subject"`
 		Message string `json:"message"`
 	}
 
+	// Limit request body size to 10KB to prevent DoS
+	r.Body = http.MaxBytesReader(w, r.Body, 10240)
+
 	var req ContactRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		http.Error(w, "Invalid request body", http.StatusBadRequest)
+		http.Error(w, "Invalid request body or payload too large", http.StatusBadRequest)
 		return
 	}
 
-	// 1. Send Notification to Admin (You)
+	// 1. Input Validation
+	req.Name = strings.TrimSpace(req.Name)
+	req.Email = strings.TrimSpace(req.Email)
+	req.Subject = strings.TrimSpace(req.Subject)
+	req.Message = strings.TrimSpace(req.Message)
+
+	if req.Name == "" || len(req.Name) > 100 {
+		http.Error(w, "Invalid name (1-100 characters)", http.StatusBadRequest)
+		return
+	}
+
+	if !emailRegex.MatchString(strings.ToLower(req.Email)) {
+		http.Error(w, "Invalid email format", http.StatusBadRequest)
+		return
+	}
+
+	if req.Message == "" || len(req.Message) > 2000 {
+		http.Error(w, "Invalid message (1-2000 characters)", http.StatusBadRequest)
+		return
+	}
+
+	// 2. Sanitization (XSS Prevention)
 	safeName := html.EscapeString(req.Name)
 	safeEmail := html.EscapeString(req.Email)
 	safeMessage := html.EscapeString(req.Message)
 
-	notifySubject := fmt.Sprintf("New Portfolio Inquiry from %s", safeName)
+	// 3. Send Notification to Admin (You)
+	notifySubject := fmt.Sprintf("New Portfolio Inquiry: %s", req.Subject)
+	if req.Subject == "" {
+		notifySubject = fmt.Sprintf("New Portfolio Inquiry from %s", safeName)
+	}
 	notifyBody := fmt.Sprintf("<h2>New Message</h2><p><b>Name:</b> %s</p><p><b>Email:</b> %s</p><p><b>Message:</b><br>%s</p>", safeName, safeEmail, safeMessage)
 
 	// Fire and forget (or handle error if critical) regarding the admin notification?
 	// Ideally we want to know if it fails.
 	go api.Mailer.SendWithRetry([]string{api.Config.TargetEmail}, notifySubject, notifyBody)
 
-	// 2. Send Auto-Reply to Sender
+	// 4. Send Auto-Reply to Sender
 	replySubject := "Thank you for contacting Nanda Kishore"
 	replyBody := fmt.Sprintf(`
         <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
@@ -86,12 +119,12 @@ func (api *API) ContactHandler(w http.ResponseWriter, r *http.Request) {
             <p>Best regards,</p>
             <p><strong>Nanda Kishore</strong><br>Senior Cloud Solution Architect</p>
         </div>
-    `, req.Name)
+    `, safeName)
 
-	go api.Mailer.SendWithRetry([]string{req.Email}, replySubject, replyBody)
+	go api.Mailer.SendWithRetry([]string{safeEmail}, replySubject, replyBody)
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]string{
-		"message": "Transmission received. Auto-reply dispatched.",
+		"message": "Transmission received. Secure channel established.",
 	})
 }

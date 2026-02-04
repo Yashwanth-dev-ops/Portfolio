@@ -1,6 +1,5 @@
 "use client";
 
-
 import { motion } from "framer-motion";
 import { Trophy, Target, Lightbulb, Shield } from "lucide-react";
 import Image from "next/image";
@@ -32,9 +31,9 @@ const principles = [
     },
 ];
 
-export default function AboutPage() {
+export function AboutSection() {
     return (
-        <div className="min-h-screen bg-metallic-900 flex items-center justify-center py-20 relative overflow-hidden">
+        <section id="about" className="min-h-screen bg-metallic-900 flex items-center justify-center py-10 md:py-20 relative overflow-hidden">
 
             {/* Massive Background Typography - Liquid Platinum */}
             <div className="absolute top-[5%] left-1/2 -translate-x-1/2 w-full flex justify-center pointer-events-none z-0 select-none overflow-hidden opacity-20">
@@ -73,7 +72,7 @@ export default function AboutPage() {
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start pt-12">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-start pt-8 md:pt-12">
 
                     {/* Left Column: Photo with Cinematic Float */}
                     <div className="relative mx-auto lg:mx-0 max-w-md w-full">
@@ -152,48 +151,52 @@ export default function AboutPage() {
                             </div>
                         </motion.div>
 
-                        {/* Principles Grid - Modern Cards */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="space-y-8"
-                        >
-                            <h3 className="relative text-2xl font-serif font-bold text-white flex items-center gap-3">
-                                <Trophy className="w-6 h-6 text-gold-500" />
-                                <span className="tracking-wide">Core Competencies</span>
-                            </h3>
-
-                            <div className="grid md:grid-cols-2 gap-4">
-                                {principles.map((item, idx) => (
-                                    <motion.div
-                                        key={idx}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.1 + (idx * 0.1), duration: 0.5 }}
-                                        className={`group/card relative p-6 rounded-xl bg-white/5 border border-white/10 overflow-hidden hover:bg-white/10 transition-all duration-500 ${idx === 2 ? 'md:col-span-2' : ''}`}
-                                    >
-                                        {/* Hover Gradient Background */}
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover/card:opacity-100 transition-opacity duration-500`} />
-
-                                        <div className="relative z-10 flex flex-col h-full">
-                                            <div className={`mb-4 inline-flex p-3 rounded-lg bg-white/5 border border-white/10 ${item.border} transition-colors duration-300`}>
-                                                <item.icon className={`w-6 h-6 text-gray-400 ${item.text} transition-colors duration-300`} />
-                                            </div>
-
-                                            <h4 className={`text-xl font-bold text-white mb-2 ${item.text} transition-colors duration-300`}>{item.title}</h4>
-                                            <p className="text-gray-400 text-sm leading-relaxed group-hover/card:text-gray-200 transition-colors duration-300">{item.desc}</p>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
                     </div>
                 </div>
 
+                {/* Principles Grid - Full Width */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="mt-20 space-y-12"
+                >
+                    <div className="text-center space-y-4">
+                        <h3 className="relative text-3xl font-serif font-bold text-white flex items-center justify-center gap-3">
+                            <Trophy className="w-8 h-8 text-gold-500" />
+                            <span className="tracking-wide">Core Competencies</span>
+                        </h3>
+                        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto opacity-50" />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {principles.map((item, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1 + (idx * 0.1), duration: 0.5 }}
+                                className="group/card relative p-8 rounded-2xl bg-white/5 border border-white/10 overflow-hidden hover:bg-white/10 hover:-translate-y-1 transition-all duration-500 hover:shadow-2xl hover:shadow-gold-500/10"
+                            >
+                                {/* Hover Gradient Background */}
+                                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover/card:opacity-100 transition-opacity duration-500`} />
+
+                                <div className="relative z-10 flex flex-col h-full items-center text-center">
+                                    <div className={`mb-6 p-4 rounded-xl bg-black/40 border border-white/10 ${item.border} transition-colors duration-300 shadow-lg group-hover:scale-110 transform duration-500`}>
+                                        <item.icon className={`w-8 h-8 text-gray-400 ${item.text} transition-colors duration-300`} />
+                                    </div>
+
+                                    <h4 className={`text-2xl font-bold text-white mb-4 ${item.text} transition-colors duration-300`}>{item.title}</h4>
+                                    <p className="text-gray-400 leading-relaxed group-hover/card:text-gray-200 transition-colors duration-300">{item.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+
             </div>
-        </div>
+        </section>
     );
 }

@@ -100,7 +100,7 @@ const experiences = [
     }
 ];
 
-export default function ExperiencePage() {
+export function ExperienceSection() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -110,7 +110,7 @@ export default function ExperiencePage() {
     const height = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
-        <div ref={containerRef} className="min-h-screen bg-metallic-900 pt-10 pb-20 relative overflow-hidden">
+        <section id="experience" ref={containerRef} className="min-h-screen bg-metallic-900 py-10 md:pt-10 md:pb-20 relative overflow-hidden">
 
             {/* Massive Background Typography - Liquid Platinum */}
             <div className="absolute top-[5%] left-1/2 -translate-x-1/2 w-full flex justify-center pointer-events-none z-0 select-none overflow-hidden opacity-20">
@@ -153,7 +153,7 @@ export default function ExperiencePage() {
                 </div>
 
             </div>
-        </div>
+        </section>
     );
 }
 
@@ -209,7 +209,7 @@ function ExperienceCard({ exp }: { exp: Experience }) {
             {/* Card Content with Active Glow & Parallax Content */}
             <motion.div
                 className={`
-                    p-6 rounded-2xl border transition-all duration-500 relative overflow-hidden backdrop-blur-sm
+                    p-4 md:p-6 rounded-2xl border transition-all duration-500 relative overflow-hidden backdrop-blur-sm
                     ${isInView
                         ? "bg-white/5 border-azure-500/50 shadow-[0_0_40px_-5px_rgba(59,130,246,0.15)] translate-x-2"
                         : "bg-black/40 border-white/5 hover:bg-white/5"

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -46,8 +45,11 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} scroll-smooth`}>
       <body className="bg-metallic-900 text-white antialiased overflow-x-hidden selection:bg-azure-500/30 selection:text-white">
         <SmoothScroll>
-          <Navbar />
-          <main className="min-h-screen pt-20">
+          {/* Global Cinematic Vignette & Grain */}
+          <div className="fixed inset-0 z-50 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
+          <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+
+          <main className="min-h-screen">
             {children}
           </main>
           <Footer />

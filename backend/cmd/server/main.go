@@ -41,8 +41,8 @@ func main() {
 	mux.HandleFunc("/api/cv", app.CVHandler) // File Server
 
 	// 6. Apply Middleware (Chain)
-	// Logger -> CORS -> Router
-	handler := middleware.Logger(middleware.EnableCORS(mux))
+	// Logger -> SecureHeaders -> CORS -> Router
+	handler := middleware.Logger(middleware.SecureHeaders(middleware.EnableCORS(mux)))
 
 	// 5. Start Server
 	port := ":8080"

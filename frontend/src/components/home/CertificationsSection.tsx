@@ -64,9 +64,9 @@ const awards = [
     { name: "GBG Annual Award | Best Partner Support", issuer: "Global Benefits Group", year: "2022" }
 ];
 
-export default function CertificationsPage() {
+export function CertificationsSection() {
     return (
-        <div className="min-h-screen bg-metallic-900 pt-20 pb-20 relative overflow-hidden">
+        <section id="certifications" className="min-h-screen bg-metallic-900 py-10 md:py-20 relative overflow-hidden">
 
             {/* Ambient Background Elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -120,7 +120,7 @@ export default function CertificationsPage() {
                         subtitle="Microsoft accredited milestones."
                     />
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 mb-24">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-8 md:mt-12 mb-12 md:mb-24">
                         {certifications.map((cert, idx) => (
                             <TiltCard key={idx} className="h-full">
                                 <motion.div
@@ -193,6 +193,6 @@ export default function CertificationsPage() {
                 </div>
 
             </div>
-        </div>
+        </section>
     );
 }

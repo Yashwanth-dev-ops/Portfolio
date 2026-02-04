@@ -31,12 +31,39 @@ func Logger(next http.Handler) http.Handler {
 	})
 }
 
+// SecureHeaders adds security-related headers to responses
+func SecureHeaders(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Strict Transport Security (HSTS) - Enforce HTTPS for 1 year
+		w.Header().Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
+
+		// Content Security Policy (CSP) - Restrict resources to same origin + necessary externals
+		w.Header().Set("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;")
+
+		// Prevent MIME type sniffing
+		w.Header().Set("X-Content-Type-Options", "nosniff")
+
+		// Prevent Clickjacking
+		w.Header().Set("X-Frame-Options", "DENY")
+
+		// XSS Protection (Legacy browsers, but good depth)
+		w.Header().Set("X-XSS-Protection", "1; mode=block")
+
+		// Referrer Policy
+		w.Header().Set("Referrer-Policy", "strict-origin-when-cross-origin")
+
+		next.ServeHTTP(w, r)
+	})
+}
+
 // EnableCORS handles Cross-Origin Resource Sharing
 func EnableCORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*") // For portfolio demo, allow all
-		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+		// In production, change "*" to the specific frontend domain
+		w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Authorization")
+		w.Header().Set("Access-Control-Allow-Credentials", "true")
 
 		if r.Method == "OPTIONS" {
 			w.WriteHeader(http.StatusOK)
