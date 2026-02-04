@@ -58,9 +58,9 @@ export function Hero() {
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col items-center select-none"
                     >
-                        {/* 1. Professional Role (Top - Eyebrow Style) */}
-                        <div className="mb-2 md:mb-8">
-                            {/* MOBILE: Typewriter Effect */}
+                        {/* 1. Professional Designation (STRICTLY ABOVE NAME) */}
+                        <div className="mb-2 md:mb-4 relative z-40">
+                            {/* MOBILE: Typewriter Effect (Starts at 0.2s) */}
                             <motion.div
                                 initial="hidden"
                                 animate="visible"
@@ -89,7 +89,7 @@ export function Hero() {
                                 ))}
                             </motion.div>
 
-                            {/* DESKTOP: Cinematic Tracking Expansion */}
+                            {/* DESKTOP: Cinematic Tracking Expansion (Starts immediately) */}
                             <motion.div
                                 initial={{ opacity: 0, letterSpacing: "-0.05em", filter: "blur(12px)" }}
                                 animate={{ opacity: 1, letterSpacing: "0.3em", filter: "blur(0px)" }}
@@ -100,13 +100,13 @@ export function Hero() {
                             </motion.div>
                         </div>
 
-                        {/* 2. MASSIVE TYPOGRAPHY (Second - Under Role) */}
+                        {/* 2. MASSIVE TYPOGRAPHY (FOLLOWS DESIGNATION) */}
                         <div className={`flex flex-col items-center font-serif font-black leading-[0.75] tracking-tight relative ${isMobile ? 'z-30 overflow-visible -mt-2' : 'z-20 overflow-hidden'} w-full`}>
                             <div className={`${isMobile ? 'overflow-visible py-0 h-auto' : 'overflow-hidden py-2 min-h-[12vw]'} w-full flex justify-center`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
-                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay }}
+                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay + 0.3 }} // Delayed after role
                                     className="text-[14vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
@@ -117,7 +117,7 @@ export function Hero() {
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
-                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary }}
+                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary + 0.3 }}
                                     className="text-[14vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
@@ -130,7 +130,7 @@ export function Hero() {
                             style={{ opacity: opacityHero }}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 1 }}
+                            transition={{ delay: 0.8, duration: 1 }} // Slighly more delay for subtext
                             className="text-lg md:text-2xl text-gray-300 mt-12 md:mt-16 max-w-2xl leading-relaxed font-light px-6 md:px-0 relative z-30 text-center"
                         >
                             Designing the <span className="text-white font-medium shadow-cyan-500/50 drop-shadow-lg">digital backbone</span> of the modern enterprise.
@@ -141,7 +141,7 @@ export function Hero() {
                             style={{ opacity: opacityHero }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.7, duration: 1 }}
+                            transition={{ delay: 1.0, duration: 1 }}
                             className="flex flex-col md:flex-row justify-center items-center gap-6 mt-12 md:mt-20 w-full md:w-auto px-4 relative z-40"
                         >
                             {/* MOBILE: Direct Mail Link */}
