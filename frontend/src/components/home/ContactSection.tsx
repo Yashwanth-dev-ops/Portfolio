@@ -133,7 +133,7 @@ export function ContactSection() {
                             <ContactCard
                                 icon={Linkedin}
                                 label="Professional Network"
-                                value="linkedin.com/in/nanda-kishore"
+                                value="Connect on LinkedIn"
                                 href="https://www.linkedin.com/in/nanda-kishore-pasupuleti-80aa00124"
                                 width="w-full"
                             />
