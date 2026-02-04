@@ -52,7 +52,7 @@ function MarqueeRow({ items, direction, speed }: { items: typeof skills, directi
                 {[...items, ...items, ...items, ...items].map((skill, i) => (
                     <div
                         key={i}
-                        className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md group hover:bg-white/10 hover:border-azure-500/30 transition-all duration-300 min-w-[200px]"
+                        className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 border border-white/10 group hover:bg-white/10 hover:border-azure-500/30 transition-all duration-300 min-w-[200px]"
                     >
                         <div className="p-2 rounded-lg bg-black/50 text-azure-400 group-hover:text-azure-300 transition-colors">
                             <skill.icon className="w-5 h-5" />

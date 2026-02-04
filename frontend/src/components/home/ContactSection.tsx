@@ -81,8 +81,8 @@ export function ContactSection() {
                 <div className="grid lg:grid-cols-2 gap-10 md:gap-20 items-start">
 
                     {/* Left Column: Context & Info */}
-                    <div className="space-y-12">
-                        <div className="space-y-6">
+                    <div className="space-y-12 flex flex-col items-center md:items-start text-center md:text-left">
+                        <div className="space-y-6 flex flex-col items-center md:items-start">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -98,7 +98,7 @@ export function ContactSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="text-5xl md:text-6xl lg:text-7xl font-sans font-bold text-white tracking-tight leading-none"
+                                className="text-4xl md:text-6xl lg:text-7xl font-sans font-bold text-white tracking-tight leading-none"
                             >
                                 Let&apos;s build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-azure-400 to-cyan-200">future together.</span>
                             </motion.h2>
@@ -108,13 +108,13 @@ export function ContactSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-lg text-gray-400 font-light leading-relaxed max-w-md"
+                                className="text-base md:text-lg text-gray-400 font-light leading-relaxed max-w-md"
                             >
                                 Ready to architect scalable cloud solutions or discuss your next big project? Initiating secure communication channel...
                             </motion.p>
                         </div>
 
-                        <div className="space-y-6">
+                        <div className="space-y-6 w-full max-w-md mx-auto md:mx-0">
                             <ContactCard
                                 icon={Mail}
                                 label="Direct Communication"
