@@ -50,14 +50,14 @@ export function Hero() {
                             initial={{ opacity: 0, letterSpacing: "-0.05em" }}
                             animate={{ opacity: 1, letterSpacing: "0.3em" }}
                             transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-                            className="text-xs md:text-xl font-mono text-azure-400 uppercase mb-4 text-center font-bold w-full"
+                            className="text-xs md:text-xl font-mono text-azure-400 uppercase mb-4 text-center font-bold w-full min-h-[1.5rem] md:min-h-[2rem]"
                         >
                             Senior Cloud Solution Architect
                         </motion.div>
 
-                        {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance (No Blur) */}
+                        {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance (No Blur) & Layout Stability */}
                         <div className="flex flex-col items-center font-serif font-black leading-[0.9] tracking-tight select-none relative z-20 w-full overflow-visible">
-                            <div className="overflow-hidden py-2 w-full flex justify-center">
+                            <div className="overflow-hidden py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]">
                                 <motion.div
                                     initial={{ y: "110%", opacity: 0 }}
                                     animate={{ y: "0%", opacity: 1 }}
@@ -68,7 +68,7 @@ export function Hero() {
                                     NANDA
                                 </motion.div>
                             </div>
-                            <div className="overflow-hidden py-2 w-full flex justify-center">
+                            <div className="overflow-hidden py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]">
                                 <motion.div
                                     initial={{ y: "110%", opacity: 0 }}
                                     animate={{ y: "0%", opacity: 1 }}

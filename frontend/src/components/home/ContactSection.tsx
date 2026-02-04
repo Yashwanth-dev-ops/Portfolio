@@ -256,22 +256,22 @@ interface ContactCardProps {
     width?: string;
 }
 
-function ContactCard({ icon: Icon, label, value, action, href, width = "w-auto" }: ContactCardProps) {
+function ContactCard({ icon: Icon, label, value, action, href, width = "w-full" }: ContactCardProps) {
     const Component = href ? 'a' : 'div';
     return (
         <Component
             href={href}
             target={href ? "_blank" : undefined}
             rel={href ? "noopener noreferrer" : undefined}
-            className={`flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-azure-500/30 hover:bg-white/[0.07] transition-all group ${width}`}
+            className={`flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/10 hover:border-azure-500/50 hover:bg-white/[0.07] active:scale-[0.98] transition-all duration-300 group ${width}`}
         >
-            <div className="p-3 rounded-full bg-black/40 border border-white/10 text-gray-400 group-hover:text-azure-400 group-hover:border-azure-500/30 transition-colors">
+            <div className="p-3 rounded-full bg-azure-500/5 border border-white/5 text-azure-400 group-hover:bg-azure-500/20 group-hover:text-azure-300 transition-colors">
                 <Icon className="w-5 h-5" />
             </div>
-            <div className="flex-1 flex flex-col md:flex-row md:items-center gap-1 md:gap-4">
+            <div className="flex-1 flex flex-col md:flex-row md:items-center gap-1 md:gap-4 overflow-hidden">
                 <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest shrink-0">{label}</p>
                 <div className="hidden md:block w-px h-3 bg-white/10" />
-                <p className="text-white font-medium group-hover:text-azure-100 transition-colors truncate">{value}</p>
+                <p className="text-white font-medium group-hover:text-azure-100 transition-colors truncate text-sm md:text-base">{value}</p>
             </div>
             {action}
         </Component>
