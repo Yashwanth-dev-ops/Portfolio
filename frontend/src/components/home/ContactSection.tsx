@@ -146,8 +146,8 @@ export function ContactSection() {
                         </div>
                     </div>
 
-                    {/* Right Column: Interactive Form */}
-                    <div className="relative">
+                    {/* Right Column: Interactive Form - Hidden on Mobile */}
+                    <div className="relative hidden md:block">
                         <div className="absolute -inset-1 bg-gradient-to-r from-azure-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-50" />
 
                         <motion.div
