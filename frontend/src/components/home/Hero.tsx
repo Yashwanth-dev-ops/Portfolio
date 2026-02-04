@@ -56,7 +56,7 @@ export function Hero() {
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                        className="space-y-6 flex flex-col items-center"
+                        className="space-y-4 md:space-y-6 flex flex-col items-center"
                     >
                         {/* MOBILE: Typewriter Effect (Tech/Console Vibe) - SEQUENCED: Starts FIRST */}
                         <motion.div
@@ -72,7 +72,7 @@ export function Hero() {
                                     }
                                 }
                             }}
-                            className="block md:hidden text-xs font-mono text-azure-400 uppercase mb-4 text-center font-bold w-full min-h-[1.5rem]"
+                            className="block md:hidden text-xs font-mono text-azure-400 uppercase mb-0 text-center font-bold w-full min-h-[1rem]"
                         >
                             {"Senior Cloud Solution Architect".split("").map((char, index) => (
                                 <motion.span
@@ -98,24 +98,24 @@ export function Hero() {
                         </motion.div>
 
                         {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance & Layout Stability */}
-                        <div className={`flex flex-col items-center font-serif font-black leading-[0.85] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible' : 'z-20 overflow-hidden'} w-full`}>
-                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} ${isMobile ? 'py-0' : 'py-2'} w-full flex justify-center min-h-[11vw] md:min-h-[12vw]`}>
+                        <div className={`flex flex-col items-center font-serif font-black leading-[0.75] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible' : 'z-20 overflow-hidden'} w-full`}>
+                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} ${isMobile ? 'py-0' : 'py-2'} w-full flex justify-center min-h-[12vw] md:min-h-[12vw]`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay }}
-                                    className="text-[11vw] md:text-[11vw] text-white text-center pb-0 md:pb-2"
+                                    className="text-[14vw] md:text-[11vw] text-white text-center pb-0 md:pb-2"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     NANDA
                                 </motion.div>
                             </div>
-                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} ${isMobile ? 'py-0' : 'py-2'} w-full flex justify-center min-h-[11vw] md:min-h-[12vw] ${isMobile ? '-mt-2' : ''}`}>
+                            <div className={`${isMobile ? 'overflow-visible' : 'overflow-hidden'} ${isMobile ? 'py-0' : 'py-2'} w-full flex justify-center min-h-[12vw] md:min-h-[12vw] ${isMobile ? '-mt-6' : ''}`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary }}
-                                    className="text-[11vw] md:text-[11vw] text-white text-center pb-0 md:pb-2"
+                                    className="text-[14vw] md:text-[11vw] text-white text-center pb-0 md:pb-2"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
                                 >
                                     KISHORE
