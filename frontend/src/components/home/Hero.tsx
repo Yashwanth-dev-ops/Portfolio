@@ -141,8 +141,17 @@ export function Hero() {
                             transition={{ delay: 0.7, duration: 1 }}
                             className="flex flex-col md:flex-row justify-center items-center gap-6 mt-10 w-full md:w-auto px-4"
                         >
-                            <Link href="#contact" className="w-full md:w-auto flex justify-center">
-                                <Cinematic3DButton className="w-full md:w-auto">
+                            {/* MOBILE: Direct Mail Link (Using premium button style) */}
+                            <a href="mailto:nanda.pandu5@gmail.com" className="w-full md:w-auto flex md:hidden justify-center">
+                                <Cinematic3DButton as={motion.div} className="w-full md:w-auto">
+                                    <Send className="w-4 h-4" />
+                                    <span className="font-bold tracking-wider">EMAIL ME</span>
+                                </Cinematic3DButton>
+                            </a>
+
+                            {/* DESKTOP: Scroll to Form */}
+                            <Link href="#contact" className="hidden md:flex w-full md:w-auto justify-center">
+                                <Cinematic3DButton as={motion.div} className="w-full md:w-auto">
                                     <Send className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">INITIATE CONTACT</span>
                                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -150,7 +159,7 @@ export function Hero() {
                             </Link>
 
                             <a href="/assets/Nanda_Kishore_Pasupuleti.pdf" download className="w-full md:w-auto flex justify-center">
-                                <Cinematic3DButton className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto">
+                                <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto">
                                     <Download className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">DOWNLOAD CV</span>
                                 </Cinematic3DButton>
