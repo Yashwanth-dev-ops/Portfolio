@@ -141,22 +141,13 @@ export function Hero() {
                             transition={{ delay: 0.7, duration: 1 }}
                             className="flex flex-col md:flex-row justify-center items-center gap-6 mt-10 w-full md:w-auto px-4 relative z-40"
                         >
-                            {/* MOBILE: Direct Mail Link (Using premium button style + FLOATING + GLOW) */}
-                            <motion.a
-                                href="mailto:nanda.pandu5@gmail.com"
-                                className="w-full md:w-auto flex md:hidden justify-center relative"
-                                animate={isMobile ? { y: [0, -8, 0] } : {}}
-                                transition={isMobile ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : {}}
-                            >
-                                {/* Mobile Persistent Glow */}
-                                {isMobile && (
-                                    <div className="absolute inset-0 bg-azure-500/20 blur-2xl animate-pulse rounded-full" />
-                                )}
-                                <Cinematic3DButton as={motion.div} className="w-full md:w-auto relative z-10 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                            {/* MOBILE: Direct Mail Link */}
+                            <a href="mailto:nanda.pandu5@gmail.com" className="w-full md:w-auto flex md:hidden justify-center relative">
+                                <Cinematic3DButton as={motion.div} className="w-full md:w-auto">
                                     <Send className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">EMAIL ME</span>
                                 </Cinematic3DButton>
-                            </motion.a>
+                            </a>
 
                             {/* DESKTOP: Scroll to Form */}
                             <div className="hidden md:flex w-full md:w-auto justify-center">
@@ -170,22 +161,12 @@ export function Hero() {
                                 </Cinematic3DButton>
                             </div>
 
-                            <motion.a
-                                href="/assets/Nanda_Kishore_Pasupuleti.pdf"
-                                download
-                                className="w-full md:w-auto flex justify-center relative"
-                                animate={isMobile ? { y: [0, -8, 0] } : {}}
-                                transition={isMobile ? { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 } : {}}
-                            >
-                                {/* Mobile Persistent Glow Secondary */}
-                                {isMobile && (
-                                    <div className="absolute inset-0 bg-white/5 blur-xl animate-pulse rounded-full" />
-                                )}
-                                <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto relative z-10">
+                            <a href="/assets/Nanda_Kishore_Pasupuleti.pdf" download className="w-full md:w-auto flex justify-center relative">
+                                <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto">
                                     <Download className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">DOWNLOAD CV</span>
                                 </Cinematic3DButton>
-                            </motion.a>
+                            </a>
                         </motion.div>
 
                         {/* Stats Block - Refined Glass Design */}
