@@ -58,47 +58,8 @@ export function Hero() {
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col items-center"
                     >
-                        {/* MOBILE: Typewriter Effect (Tech/Console Vibe) - NO SPACE-Y GAP */}
-                        <motion.div
-                            initial="hidden"
-                            animate="visible"
-                            variants={{
-                                hidden: { opacity: 0 },
-                                visible: {
-                                    opacity: 1,
-                                    transition: {
-                                        staggerChildren: 0.05,
-                                        delayChildren: 0.2 // Start immediately
-                                    }
-                                }
-                            }}
-                            className="block md:hidden text-xs font-mono text-azure-400 uppercase mb-2 text-center font-bold w-full"
-                        >
-                            {"Senior Cloud Solution Architect".split("").map((char, index) => (
-                                <motion.span
-                                    key={index}
-                                    variants={{
-                                        hidden: { opacity: 0 },
-                                        visible: { opacity: 1 }
-                                    }}
-                                >
-                                    {char}
-                                </motion.span>
-                            ))}
-                        </motion.div>
-
-                        {/* DESKTOP: Cinematic Tracking Expansion (Premium Vibe) */}
-                        <motion.div
-                            initial={{ opacity: 0, letterSpacing: "-0.05em", filter: "blur(12px)" }}
-                            animate={{ opacity: 1, letterSpacing: "0.3em", filter: "blur(0px)" }}
-                            transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-                            className="hidden md:block text-xl font-mono text-azure-400 uppercase mb-8 text-center font-bold w-full"
-                        >
-                            Senior Cloud Solution Architect
-                        </motion.div>
-
-                        {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance & Layout Stability */}
-                        <div className={`flex flex-col items-center font-serif font-black leading-[0.75] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible -mt-12' : 'z-20 overflow-hidden'} w-full`}>
+                        {/* 1. MASSIVE TYPOGRAPHY (First) - Name now at the top */}
+                        <div className={`flex flex-col items-center font-serif font-black leading-[0.75] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible' : 'z-20 overflow-hidden'} w-full`}>
                             <div className={`${isMobile ? 'overflow-visible py-0 h-auto' : 'overflow-hidden py-2 min-h-[12vw]'} w-full flex justify-center`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
@@ -121,6 +82,48 @@ export function Hero() {
                                     KISHORE
                                 </motion.div>
                             </div>
+                        </div>
+
+                        {/* 2. Professional Role (Shifted Below Name) */}
+                        <div className="mt-4 md:mt-8">
+                            {/* MOBILE: Typewriter Effect */}
+                            <motion.div
+                                initial="hidden"
+                                animate="visible"
+                                variants={{
+                                    hidden: { opacity: 0 },
+                                    visible: {
+                                        opacity: 1,
+                                        transition: {
+                                            staggerChildren: 0.05,
+                                            delayChildren: 0.8 // Start after name appears
+                                        }
+                                    }
+                                }}
+                                className="block md:hidden text-xs font-mono text-azure-400 uppercase text-center font-bold w-full"
+                            >
+                                {"Senior Cloud Solution Architect".split("").map((char, index) => (
+                                    <motion.span
+                                        key={index}
+                                        variants={{
+                                            hidden: { opacity: 0 },
+                                            visible: { opacity: 1 }
+                                        }}
+                                    >
+                                        {char}
+                                    </motion.span>
+                                ))}
+                            </motion.div>
+
+                            {/* DESKTOP: Cinematic Tracking Expansion */}
+                            <motion.div
+                                initial={{ opacity: 0, letterSpacing: "-0.05em", filter: "blur(12px)" }}
+                                animate={{ opacity: 1, letterSpacing: "0.3em", filter: "blur(0px)" }}
+                                transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+                                className="hidden md:block text-xl font-mono text-azure-400 uppercase text-center font-bold w-full"
+                            >
+                                Senior Cloud Solution Architect
+                            </motion.div>
                         </div>
 
                         <motion.p
