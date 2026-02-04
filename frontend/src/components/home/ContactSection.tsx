@@ -154,7 +154,7 @@ export function ContactSection() {
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="relative p-8 md:p-10 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl"
+                            className="relative p-6 md:p-10 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl"
                         >
                             <h3 className="text-2xl text-white font-medium mb-8 flex items-center gap-3">
                                 <Terminal className="w-6 h-6 text-azure-400" />
@@ -181,7 +181,7 @@ export function ContactSection() {
                                 </motion.div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid grid-cols-2 gap-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <InputGroup
                                             label="Name"
                                             name="name"
