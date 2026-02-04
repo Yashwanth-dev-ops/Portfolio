@@ -45,7 +45,7 @@ export async function POST(req: Request) {
         // 3. Email Content (Admin Notification)
         const mailOptionsFn = {
             from: process.env.SMTP_USER,
-            to: process.env.SMTP_USER, // Send to yourself
+            to: process.env.TARGET_EMAIL || process.env.SMTP_USER, // Send to Target or Self
             subject: `Portfolio Contact: ${safeSubject}`,
             html: `
                 <h3>New Message from Portfolio</h3>
