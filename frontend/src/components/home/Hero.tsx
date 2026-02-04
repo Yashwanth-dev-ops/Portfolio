@@ -34,8 +34,8 @@ export function Hero() {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    const nameDelay = isMobile ? 2.5 : 0.1;
-    const nameDelaySecondary = isMobile ? 2.6 : 0.2;
+    const nameDelay = isMobile ? 0.5 : 0.1;
+    const nameDelaySecondary = isMobile ? 0.6 : 0.2;
 
     return (
         <section ref={containerRef} className="relative min-h-[95svh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden bg-metallic-900 pb-10 md:pb-0">
@@ -96,12 +96,12 @@ export function Hero() {
                             Senior Cloud Solution Architect
                         </motion.div>
 
-                        {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance (No Blur) & Layout Stability */}
+                        {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance & Layout Stability */}
                         <div className="flex flex-col items-center font-serif font-black leading-[0.9] tracking-tight select-none relative z-20 w-full overflow-visible">
                             <div className="overflow-hidden py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]">
                                 <motion.div
-                                    initial={{ y: "110%", opacity: 0 }}
-                                    animate={{ y: "0%", opacity: 1 }}
+                                    initial={isMobile ? { opacity: 0, scale: 0.8, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
+                                    animate={isMobile ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay }}
                                     className="text-[13vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
@@ -111,8 +111,8 @@ export function Hero() {
                             </div>
                             <div className="overflow-hidden py-2 w-full flex justify-center min-h-[14vw] md:min-h-[12vw]">
                                 <motion.div
-                                    initial={{ y: "110%", opacity: 0 }}
-                                    animate={{ y: "0%", opacity: 1 }}
+                                    initial={isMobile ? { opacity: 0, scale: 0.8, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
+                                    animate={isMobile ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary }}
                                     className="text-[13vw] md:text-[11vw] text-white text-center"
                                     style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
