@@ -98,7 +98,7 @@ export function Hero() {
                         </motion.div>
 
                         {/* MASSIVE TYPOGRAPHY - Optimized for Mobile Performance & Layout Stability */}
-                        <div className={`flex flex-col items-center font-serif font-black leading-[0.75] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible' : 'z-20 overflow-hidden'} w-full`}>
+                        <div className={`flex flex-col items-center font-serif font-black leading-[0.75] tracking-tight select-none relative ${isMobile ? 'z-30 overflow-visible -mt-12' : 'z-20 overflow-hidden'} w-full`}>
                             <div className={`${isMobile ? 'overflow-visible py-0 h-auto' : 'overflow-hidden py-2 min-h-[12vw]'} w-full flex justify-center`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
@@ -110,7 +110,7 @@ export function Hero() {
                                     NANDA
                                 </motion.div>
                             </div>
-                            <div className={`${isMobile ? 'overflow-visible py-0 h-auto -mt-4' : 'overflow-hidden py-2 min-h-[12vw]'} w-full flex justify-center`}>
+                            <div className={`${isMobile ? 'overflow-visible py-0 h-auto -mt-1' : 'overflow-hidden py-2 min-h-[12vw]'} w-full flex justify-center`}>
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
