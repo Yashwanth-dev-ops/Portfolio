@@ -47,7 +47,7 @@ export function Hero() {
                         {/* Role Text - Top Center */}
                         {/* Role Text - Top Center */}
 
-                        {/* MOBILE: Typewriter Effect (Tech/Console Vibe) */}
+                        {/* MOBILE: Typewriter Effect (Tech/Console Vibe) - SEQUENCED: Starts after Name */}
                         <motion.div
                             initial="hidden"
                             animate="visible"
@@ -57,7 +57,7 @@ export function Hero() {
                                     opacity: 1,
                                     transition: {
                                         staggerChildren: 0.05,
-                                        delayChildren: 0.5
+                                        delayChildren: 1.5 // Wait for Name (1.2s) to finish
                                     }
                                 }
                             }}
