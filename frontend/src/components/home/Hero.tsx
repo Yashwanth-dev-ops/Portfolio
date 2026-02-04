@@ -155,7 +155,7 @@ export function Hero() {
                             </a>
 
                             {/* DESKTOP ONLY: Cinematic Contact Link */}
-                            <Link href="/contact" className="hidden md:block">
+                            <Link href="#contact" className="hidden md:block">
                                 <Cinematic3DButton>
                                     <Send className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">INITIATE CONTACT</span>
