@@ -56,9 +56,9 @@ export function Hero() {
                         {/* 1. Professional Designation (MOVED BACK TO TOP) - Chrome/Silver Gradient */}
                         <div className="mb-4 md:mb-6 relative z-40">
                             <motion.div
-                                initial={{ opacity: 0, letterSpacing: "0.5em" }}
+                                initial={{ opacity: 0, letterSpacing: "0.25em" }}
                                 whileInView={{ opacity: 1, letterSpacing: "0.2em" }}
-                                viewport={{ once: false }}
+                                viewport={{ once: false, margin: "-50px" }}
                                 transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
                                 className="text-sm md:text-xl font-sans uppercase text-center font-bold tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-white to-gray-400 drop-shadow-sm"
                             >
