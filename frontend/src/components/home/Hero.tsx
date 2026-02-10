@@ -19,11 +19,6 @@ export function Hero() {
     // Delayed fade out for Main Hero (Text/Buttons): Starts fading at 20% scroll, fully transparent at 80%
     const opacityHero = useTransform(scrollYProgress, [0.2, 0.8], [1, 0]);
 
-    // Stats vanish effect: Triggered much earlier (40% scroll) so it's GONE before overlap
-    const opacityStats = useTransform(scrollYProgress, [0.4, 0.7], [1, 0]);
-    const scaleStats = useTransform(scrollYProgress, [0.4, 0.7], [1, 0.6]);
-    const yStats = useTransform(scrollYProgress, [0.4, 0.7], [0, 100]);
-
     // Responsive delay logic for sequential vs parallel animation
     const [isMobile, setIsMobile] = useState(false);
 
@@ -52,9 +47,9 @@ export function Hero() {
                     className="flex flex-col items-center relative z-20"
                 >
                     <motion.div
-                        style={{ opacity: opacityHero }}
                         initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false }}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col items-center select-none"
                     >
@@ -62,7 +57,8 @@ export function Hero() {
                         <div className="mb-4 md:mb-6 relative z-40">
                             <motion.div
                                 initial={{ opacity: 0, letterSpacing: "0.5em" }}
-                                animate={{ opacity: 1, letterSpacing: "0.2em" }}
+                                whileInView={{ opacity: 1, letterSpacing: "0.2em" }}
+                                viewport={{ once: false }}
                                 transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
                                 className="text-sm md:text-xl font-sans uppercase text-center font-bold tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-white to-gray-400 drop-shadow-sm"
                             >
@@ -74,14 +70,15 @@ export function Hero() {
                         <div className={`flex flex-col items-center font-['Times_New_Roman',_serif] font-bold md:font-extrabold leading-[0.9] tracking-tight relative z-30 overflow-visible w-full`}>
                             <div className="overflow-visible py-0 h-auto w-full flex justify-center">
                                 <motion.div
-                                    initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
-                                    animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
-                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay + 0.3 }}
+                                    initial={{ opacity: 0, filter: "blur(20px)", y: 50 }}
+                                    whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                                    viewport={{ once: false, margin: "-50px" }}
+                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay + 0.1 }}
                                     className="text-[15vw] md:text-[12vw] text-white text-center uppercase"
                                     style={{
                                         // Multi-layer shadow for "Physical Light" feel: Core glow + Bloom + Ambient
                                         textShadow: "0 0 10px rgba(255,255,255,0.4), 0 0 20px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.1)",
-                                        willChange: "transform, opacity"
+                                        willChange: "transform, opacity, filter"
                                     }}
                                 >
                                     NANDA
@@ -89,13 +86,14 @@ export function Hero() {
                             </div>
                             <div className="overflow-visible py-0 h-auto -mt-2 md:-mt-5 w-full flex justify-center">
                                 <motion.div
-                                    initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
-                                    animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
-                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary + 0.3 }}
+                                    initial={{ opacity: 0, filter: "blur(20px)", y: 50 }}
+                                    whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                                    viewport={{ once: false, margin: "-50px" }}
+                                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary + 0.1 }}
                                     className="text-[15vw] md:text-[12vw] text-white text-center uppercase"
                                     style={{
                                         textShadow: "0 0 10px rgba(255,255,255,0.4), 0 0 20px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.1)",
-                                        willChange: "transform, opacity"
+                                        willChange: "transform, opacity, filter"
                                     }}
                                 >
                                     KISHORE
@@ -104,9 +102,9 @@ export function Hero() {
                         </div>
 
                         <motion.p
-                            style={{ opacity: opacityHero }}
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: false }}
                             transition={{ delay: 1.0, duration: 1 }}
                             className="text-lg md:text-2xl text-gray-500 mt-2 max-w-2xl leading-relaxed font-light px-6 md:px-0 relative z-30 text-center"
                         >
@@ -115,46 +113,28 @@ export function Hero() {
 
                         {/* Buttons - Consistent spacing */}
                         <motion.div
-                            style={{ opacity: opacityHero }}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.0, duration: 1 }}
-                            className="flex flex-col md:flex-row justify-center items-center gap-6 mt-12 md:mt-16 w-full md:w-auto px-4 relative z-40"
+                            className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8 relative z-30 w-full px-4 md:px-0 max-w-md md:max-w-none"
                         >
-                            {/* MOBILE: Direct Mail Link */}
-                            <a href="mailto:nanda.pandu5@gmail.com" className="w-full md:w-auto flex md:hidden justify-center relative">
-                                <Cinematic3DButton as={motion.div} className="w-full md:w-auto">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nanda.pandu5@gmail.com" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex justify-center relative">
+                                <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto md:min-w-[180px]">
                                     <Send className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">EMAIL ME</span>
                                 </Cinematic3DButton>
                             </a>
 
-                            {/* DESKTOP: Scroll to Form */}
-                            <div className="hidden md:flex w-full md:w-auto justify-center">
-                                <Cinematic3DButton
-                                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                                    className="w-full md:w-auto"
-                                >
-                                    <Send className="w-4 h-4" />
-                                    <span className="font-bold tracking-wider">INITIATE CONTACT</span>
-                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                </Cinematic3DButton>
-                            </div>
-
                             <a href="/assets/Nanda_Kishore_Pasupuleti.pdf" download className="w-full md:w-auto flex justify-center relative">
-                                <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto">
+                                <Cinematic3DButton as={motion.div} className="bg-white/5 border-white/5 hover:bg-white/10 w-full md:w-auto md:min-w-[180px]">
                                     <Download className="w-4 h-4" />
                                     <span className="font-bold tracking-wider">DOWNLOAD CV</span>
                                 </Cinematic3DButton>
                             </a>
                         </motion.div>
 
-                        {/* Stats Block - Refined Glass Design */}
+                        {/* Stats Block - Refined Glass Design - No Scroll Vanish */}
                         <motion.div
-                            style={{ opacity: opacityStats, scale: scaleStats, y: yStats }}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.5 }}
+                            viewport={{ once: false, amount: 0.5 }} // Keep the repeating animation
                             transition={{ duration: 0.8 }}
                             className="mt-8 mb-10 md:mt-12 md:mb-20 flex flex-wrap justify-center gap-4 md:gap-20 px-4 md:px-12 py-4 md:py-6 relative group"
                         >
@@ -188,12 +168,12 @@ export function Hero() {
 
 function CountingNumber({ value, suffix }: { value: number, suffix: string }) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-50px" });
+    const isInView = useInView(ref, { once: false, margin: "-50px" }); // Allow re-triggering
     // Tuned Spring: Stiffer and less damping to ensure it hits the target quickly without getting "stuck"
     const springValue = useSpring(0, {
         mass: 1,
         stiffness: 100,
-        damping: 15, // Reduced damping to prevent "slow tail"
+        damping: 15,
         restDelta: 0.001
     });
     const [displayValue, setDisplayValue] = useState(0);
@@ -201,12 +181,13 @@ function CountingNumber({ value, suffix }: { value: number, suffix: string }) {
     useEffect(() => {
         if (isInView) {
             springValue.set(value);
+        } else {
+            springValue.set(0); // Reset when out of view
         }
     }, [isInView, value, springValue]);
 
     useEffect(() => {
         return springValue.on("change", (latest) => {
-            // Round to ensure we hit the integer target
             setDisplayValue(Math.round(latest));
         });
     }, [springValue]);

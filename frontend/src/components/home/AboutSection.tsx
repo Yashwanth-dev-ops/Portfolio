@@ -60,7 +60,7 @@ export function AboutSection() {
                     <motion.div
                         initial={{ opacity: 0, letterSpacing: "-0.05em", filter: "blur(12px)" }}
                         whileInView={{ opacity: 1, letterSpacing: "0.15em", filter: "blur(0px)" }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                         className="text-4xl md:text-6xl font-serif font-bold text-white uppercase mb-4"
                     >
@@ -83,7 +83,7 @@ export function AboutSection() {
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }}
                             transition={{ duration: 1 }}
                         >
                             {/* Floating Card */}
@@ -121,7 +121,7 @@ export function AboutSection() {
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }}
                             className="space-y-8"
                         >
                             <div className="space-y-6">
@@ -158,7 +158,7 @@ export function AboutSection() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ delay: 0.2 }}
                     className="mt-20 space-y-12"
                 >
