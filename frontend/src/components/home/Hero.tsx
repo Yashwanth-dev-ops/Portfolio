@@ -43,7 +43,7 @@ export function Hero() {
             <div className="absolute inset-0 z-0">
                 <NeuralBackground />
                 {/* Refined gradient overlay: Less aggressive on mobile to prevent "black shade" covering the name */}
-                <div className={`absolute inset-0 bg-gradient-to-b from-black/20 ${isMobile ? 'via-metallic-900/30' : 'via-metallic-900/50'} to-metallic-900`} />
+                <div className={`absolute inset-0 bg-gradient-to-b from-black/20 ${isMobile ? 'via-metallic-900/30' : 'via-metallic-900/50'} to-metallic-900/90`} />
             </div>
 
             <div className="relative z-10 w-full max-w-[1800px] px-4 flex flex-col items-center text-center pt-10">
@@ -58,68 +58,45 @@ export function Hero() {
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col items-center select-none"
                     >
-                        {/* 1. Professional Designation (STRICTLY ABOVE NAME) - Unified Rhythm */}
-                        <div className="mb-2 md:mb-4 relative z-40">
-                            {/* MOBILE: Typewriter Effect (Starts at 0.2s) */}
+                        {/* 1. Professional Designation (MOVED BACK TO TOP) - Chrome/Silver Gradient */}
+                        <div className="mb-4 md:mb-6 relative z-40">
                             <motion.div
-                                initial="hidden"
-                                animate="visible"
-                                variants={{
-                                    hidden: { opacity: 0 },
-                                    visible: {
-                                        opacity: 1,
-                                        transition: {
-                                            staggerChildren: 0.05,
-                                            delayChildren: 0.2
-                                        }
-                                    }
-                                }}
-                                className="block md:hidden text-xs font-mono text-azure-400 uppercase text-center font-bold w-full"
-                            >
-                                {"Senior Cloud Solution Architect".split("").map((char, index) => (
-                                    <motion.span
-                                        key={index}
-                                        variants={{
-                                            hidden: { opacity: 0 },
-                                            visible: { opacity: 1 }
-                                        }}
-                                    >
-                                        {char}
-                                    </motion.span>
-                                ))}
-                            </motion.div>
-
-                            {/* DESKTOP: Cinematic Tracking Expansion (Starts immediately) */}
-                            <motion.div
-                                initial={{ opacity: 0, letterSpacing: "-0.05em", filter: "blur(12px)" }}
-                                animate={{ opacity: 1, letterSpacing: "0.3em", filter: "blur(0px)" }}
-                                transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-                                className="hidden md:block text-xl font-mono text-azure-400 uppercase text-center font-bold w-full"
+                                initial={{ opacity: 0, letterSpacing: "0.5em" }}
+                                animate={{ opacity: 1, letterSpacing: "0.2em" }}
+                                transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
+                                className="text-sm md:text-xl font-sans uppercase text-center font-bold tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-white to-gray-400 drop-shadow-sm"
                             >
                                 Senior Cloud Solution Architect
                             </motion.div>
                         </div>
 
-                        {/* 2. MASSIVE TYPOGRAPHY (TIGHT STACKING - Unified for Mobile/Desktop) */}
-                        <div className={`flex flex-col items-center font-serif font-black leading-[0.75] tracking-tight relative z-30 overflow-visible -mt-2 w-full`}>
+                        {/* 2. MASSIVE TYPOGRAPHY (NAME) - Minimal Gap - Cinematic Static Glow */}
+                        <div className={`flex flex-col items-center font-['Times_New_Roman',_serif] font-bold md:font-extrabold leading-[0.9] tracking-tight relative z-30 overflow-visible w-full`}>
                             <div className="overflow-visible py-0 h-auto w-full flex justify-center">
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelay + 0.3 }}
-                                    className="text-[14vw] md:text-[11vw] text-white text-center"
-                                    style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
+                                    className="text-[15vw] md:text-[12vw] text-white text-center uppercase"
+                                    style={{
+                                        // Multi-layer shadow for "Physical Light" feel: Core glow + Bloom + Ambient
+                                        textShadow: "0 0 10px rgba(255,255,255,0.4), 0 0 20px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.1)",
+                                        willChange: "transform, opacity"
+                                    }}
                                 >
                                     NANDA
                                 </motion.div>
                             </div>
-                            <div className="overflow-visible py-0 h-auto -mt-1 w-full flex justify-center">
+                            <div className="overflow-visible py-0 h-auto -mt-2 md:-mt-5 w-full flex justify-center">
                                 <motion.div
                                     initial={isMobile ? { opacity: 0, filter: "blur(20px)" } : { y: "110%", opacity: 0 }}
                                     animate={isMobile ? { opacity: 1, filter: "blur(0px)" } : { y: "0%", opacity: 1 }}
                                     transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1], delay: nameDelaySecondary + 0.3 }}
-                                    className="text-[14vw] md:text-[11vw] text-white text-center"
-                                    style={{ textShadow: "0 0 20px rgba(255,255,255,0.4)" }}
+                                    className="text-[15vw] md:text-[12vw] text-white text-center uppercase"
+                                    style={{
+                                        textShadow: "0 0 10px rgba(255,255,255,0.4), 0 0 20px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.1)",
+                                        willChange: "transform, opacity"
+                                    }}
                                 >
                                     KISHORE
                                 </motion.div>
@@ -130,10 +107,10 @@ export function Hero() {
                             style={{ opacity: opacityHero }}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.8, duration: 1 }}
-                            className="text-lg md:text-2xl text-gray-300 mt-12 max-w-2xl leading-relaxed font-light px-6 md:px-0 relative z-30 text-center"
+                            transition={{ delay: 1.0, duration: 1 }}
+                            className="text-lg md:text-2xl text-gray-500 mt-2 max-w-2xl leading-relaxed font-light px-6 md:px-0 relative z-30 text-center"
                         >
-                            Designing the <span className="text-white font-medium shadow-cyan-500/50 drop-shadow-lg">digital backbone</span> of the modern enterprise.
+                            Designing the <span className="text-gray-300 font-medium">digital backbone</span> of the modern enterprise.
                         </motion.p>
 
                         {/* Buttons - Consistent spacing */}
